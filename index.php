@@ -223,8 +223,8 @@ $loginUrl = 'login.php';
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width:680px;" data-aos="fade-up">
             <span class="eyebrow"><i class="bi bi-house-door-fill"></i> Pilihan Kamar</span>
-            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);">Tipe kamar yang tersedia</h2>
-            <p class="section-sub mx-auto mt-2">Daftar kamar di bawah ini diambil dari database hotel, termasuk harga, fasilitas, dan jumlah unit yang terdata.</p>
+            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);">Tipe kamar </h2>
+            <p class="section-sub mx-auto mt-2"></p>
         </div>
         <div class="row g-4">
             <?php if (!$rooms): ?>
@@ -282,8 +282,8 @@ $loginUrl = 'login.php';
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width:680px;" data-aos="fade-up">
             <span class="eyebrow"><i class="bi bi-stars"></i> Fasilitas</span>
-            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);">Fasilitas yang tercatat di sistem kamar</h2>
-            <p class="section-sub mx-auto mt-2">Fasilitas berikut diambil dari data fasilitas tipe kamar yang sudah tersimpan pada database hotel.</p>
+            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);">Fasilitas kamar</h2>
+            <p class="section-sub mx-auto mt-2"></p>
         </div>
         <?php
         $facilities = [];
@@ -355,7 +355,7 @@ $loginUrl = 'login.php';
     <div class="container contact-card">
         <div class="text-center mx-auto mb-5" style="max-width:680px;" data-aos="fade-up">
             <span class="eyebrow"><i class="bi bi-signpost-split-fill"></i> Cara Akses</span>
-            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);">Dari landing page ke sistem hotel</h2>
+            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);"></h2>
         </div>
         <div class="hiw-wrap">
             <div class="hiw-line"></div>
@@ -384,8 +384,8 @@ $loginUrl = 'login.php';
     <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width:680px;" data-aos="fade-up">
             <span class="eyebrow"><i class="bi bi-images"></i> Galeri</span>
-            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);">Tampilan hotel dalam tiga foto</h2>
-            <p class="section-sub mx-auto mt-2">Menggunakan aset foto yang sudah tersedia di project hotel Anda.</p>
+            <h2 class="section-title mt-3" style="font-size:clamp(1.8rem,3.2vw,2.5rem);"></h2>
+            <p class="section-sub mx-auto mt-2"></p>
         </div>
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up"><div class="cause-card"><div class="cause-img" style="height:260px;"><img src="assets_volt/img/hotel1.jpg" alt="Grand Dian Hotel" loading="lazy"></div><div class="cause-body"><h5 class="font-display fw-bold mb-1">Grand Dian Hotel</h5><p class="text-muted small mb-0">Tampilan hotel dari aset project.</p></div></div></div>
