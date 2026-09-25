@@ -35,10 +35,10 @@ $berhasil = false;
 $legacy_sha1 = false;
 
 if (mysqli_stmt_fetch($stmt)) {
-    // Akun baru menggunakan password_hash().
+   
     if (password_get_info((string) $password_db)['algo'] !== 0 && password_verify($password, (string) $password_db)) {
         $berhasil = true;
-    // Akun lama tetap bisa masuk menggunakan SHA1, lalu hash-nya dinaikkan levelnya.
+    
     } elseif (hash_equals((string) $password_db, sha1($password))) {
         $berhasil = true;
         $legacy_sha1 = true;

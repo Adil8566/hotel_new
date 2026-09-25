@@ -11,8 +11,8 @@ function landing_rupiah(float $value): string
     return 'Rp ' . number_format($value, 0, ',', '.');
 }
 
-// Statistik publik diambil langsung dari database hotel agar angka pada landing page
-// selalu mengikuti kondisi data terbaru.
+//  landing page
+
 $stats = [
     'tipe_kamar' => 0,
     'kamar' => 0,

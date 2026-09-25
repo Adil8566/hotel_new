@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Jika pengguna sudah login, arahkan ke halaman sesuai peran.
+
 if (isset($_SESSION['id_pengguna'], $_SESSION['peran'])) {
     if ($_SESSION['peran'] === 'admin') {
         header('Location: admin/index.php');
@@ -13,7 +13,7 @@ if (isset($_SESSION['id_pengguna'], $_SESSION['peran'])) {
         exit;
     }
 
-    // Session tidak valid.
+   
     session_unset();
     session_destroy();
     session_start();

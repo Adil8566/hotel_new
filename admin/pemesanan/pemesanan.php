@@ -155,16 +155,33 @@ $total_checkout_hari_ini = (int) (mysqli_fetch_assoc($today_out)['total'] ?? 0);
                             <td><?= rupiah($b['total']); ?></td>
                             <td><span class="badge <?= status_pembayaran_badge($ps); ?>"><?= $ps; ?></span><br><small><?= rupiah($sisa); ?> sisa</small></td>
                             <td><span class="badge <?= status_booking_badge($st); ?>"><?= status_booking_label($st); ?></span></td>
-                            <td class="text-center no-print" style="min-width:220px">
-                                <a href="detail.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-primary mb-1" title="Detail"><i class="fas fa-eye"></i></a>
-                                <?php if ($st === 'pending'): ?><form action="verifikasi.php" method="POST" class="d-inline"><input type="hidden" name="id" value="<?= (int)$b['id_booking']; ?>"><button class="btn btn-sm btn-success mb-1" title="Konfirmasi" onclick="return confirm('Konfirmasi pemesanan ini?');"><i class="fas fa-check"></i></button></form><?php endif; ?>
-                                <?php if ($st === 'dikonfirmasi'): ?><form action="checkin.php" method="POST" class="d-inline"><input type="hidden" name="id" value="<?= (int)$b['id_booking']; ?>"><button class="btn btn-sm btn-info mb-1" title="Check-in" onclick="return confirm('Lakukan check-in untuk booking ini?');"><i class="fas fa-right-to-bracket"></i></button></form><?php endif; ?>
-                                <?php if ($st === 'checkin'): ?><form action="checkout.php" method="POST" class="d-inline"><input type="hidden" name="id" value="<?= (int)$b['id_booking']; ?>"><button class="btn btn-sm btn-success mb-1" title="Check-out" onclick="return confirm('Lakukan check-out untuk booking ini?');"><i class="fas fa-right-from-bracket"></i></button></form><?php endif; ?>
-                                <?php if (in_array($st, ['pending','dikonfirmasi'], true)): ?><form action="batalkan.php" method="POST" class="d-inline"><input type="hidden" name="id" value="<?= (int)$b['id_booking']; ?>"><button class="btn btn-sm btn-outline-danger mb-1" title="Batalkan" onclick="return confirm('Batalkan pemesanan ini?');"><i class="fas fa-ban"></i></button></form><?php endif; ?>
-                                <a href="pembayaran.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-warning mb-1" title="Pembayaran"><i class="fas fa-money-bill-wave"></i></a>
-                                <a href="cetak.php?id=<?= (int)$b['id_booking']; ?>" target="_blank" class="btn btn-sm btn-danger mb-1" title="PDF"><i class="fas fa-file-pdf"></i></a>
-                                <?php if (!in_array($st, ['checkout','dibatalkan'], true)): ?><a href="edit.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-outline-warning mb-1" title="Edit"><i class="fas fa-pen"></i></a><?php endif; ?>
-                                <a href="hapus.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-secondary mb-1" title="Hapus" onclick="return confirm('Yakin menghapus data pemesanan ini? Data pembayaran terkait juga akan dihapus.');"><i class="fas fa-trash"></i></a>
+                            <td class="text-center no-print" style="min-width:180px">
+                                <!-- 1. Tombol Detail -->
+                                <a href="detail.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-primary mb-1" title="Detail">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+
+                                <!-- 2. Tombol Konfirmasi Pembayaran -->
+                                <?php if ($ps !== 'Lunas' || $st === 'pending'): ?>
+                                    <form action="konfirmasi_pembayaran.php" method="POST" class="d-inline">
+                                        <input type="hidden" name="id" value="<?= (int)$b['id_booking']; ?>">
+                                        <button type="submit" class="btn btn-sm btn-success mb-1" title="Konfirmasi Pembayaran" onclick="return confirm('Konfirmasi pembayaran dari user? Status otomatis menjadi Pending.');">
+                                            <i class="fas fa-check-circle"></i>
+                                        </button>
+                                    </form>
+                                <?php endif; ?>
+
+                                <!-- 3. Tombol Edit -->
+                                <?php if (!in_array($st, ['checkout','dibatalkan'], true)): ?>
+                                    <a href="edit.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-warning mb-1" title="Edit">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                <?php endif; ?>
+
+                                <!-- 4. Tombol Hapus -->
+                                <a href="hapus.php?id=<?= (int)$b['id_booking']; ?>" class="btn btn-sm btn-danger mb-1" title="Hapus" onclick="return confirm('Yakin menghapus data pemesanan ini? Data pembayaran terkait juga akan dihapus.');">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endwhile; else: ?><tr><td colspan="10" class="text-center py-4 text-muted">Belum ada data pemesanan yang sesuai filter.</td></tr><?php endif; ?>
